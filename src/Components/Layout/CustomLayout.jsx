@@ -6,7 +6,7 @@ const CustomLayout = ({children}) => {
   return (
     <div>
       <Navbar/>
-      <div style={{marginBottom : "100px"}}>
+      <div>
         {children}
       </div>
       <Footer/>
