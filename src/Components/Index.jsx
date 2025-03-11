@@ -11,10 +11,10 @@ const Index = () => {
     <CustomLayout>
       <section className='relative'>
         <motion.div
-          initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-          animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-          exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-          transition={{ duration: 1.0, delay: 1 }}   // Smooth transition
+          initial={{ opacity: 0, y: 0 }}  
+          animate={{ opacity: 1, y: 0 }}   
+          exit={{ opacity: 0, y: -50 }}   
+          transition={{ duration: 1.0, delay: 1 }}   
         >
           <div className="icons absolute left-[10%] text-2xl">
             <FontAwesomeIcon icon={faMicrochip} className='text-white' />
@@ -31,19 +31,19 @@ const Index = () => {
         </motion.div>
         <section className='flex justify-center items-center flex-col gap-5'>
           <motion.div
-            initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-            animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-            exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-            transition={{ duration: 1.0, delay: 1 }}   // Smooth transition
+            initial={{ opacity: 0, y: 0 }}  
+            animate={{ opacity: 1, y: 0 }}  
+            exit={{ opacity: 0, y: -50 }}    
+            transition={{ duration: 1.0, delay: 1 }}  
           >
             <div className="design h-[400px] w-[900px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox relative">
 
               <div className="titlesandanimation text-white flex flex-col justify-center items-center">
                 <motion.div
-                  initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-                  animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-                  exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-                  transition={{ duration: 1.0, delay: 2 }}   // Smooth transition
+                  initial={{ opacity: 0, y: 0 }}  
+                  animate={{ opacity: 1, y: 0 }}  
+                  exit={{ opacity: 0, y: -50 }}    
+                  transition={{ duration: 1.0, delay: 2 }}   
                 >
                   <div className="animation realtive">
                     <ChipAnimation />
@@ -52,20 +52,20 @@ const Index = () => {
                 <div className="titles absolute top-[35%]">
                   <div className="mainTitle">
                     <motion.div
-                      initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-                      animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-                      exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-                      transition={{ duration: 1.0, delay: 2 }}   // Smooth transition
+                      initial={{ opacity: 0, y: 0 }}  
+                      animate={{ opacity: 1, y: 0 }}   
+                      exit={{ opacity: 0, y: -50 }}    
+                      transition={{ duration: 1.0, delay: 2 }}  
                     >
                       <h1 className='text-[4rem] font-bold'>CRITIC_LAUNCH_115</h1>
                     </motion.div>
                   </div>
                   <div className="description text-[1.5rem] font-bold text-[#84bdae]">
                     <motion.div
-                      initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-                      animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-                      exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-                      transition={{ duration: 1.0, delay: 2 }}   // Smooth transition
+                      initial={{ opacity: 0, y: 0 }}  
+                      animate={{ opacity: 1, y: 0 }}   
+                      exit={{ opacity: 0, y: -50 }}    
+                      transition={{ duration: 1.0, delay: 2 }}   
                     >
                       <h3>Your AI-Powered Art Studio!</h3>
                     </motion.div>
@@ -76,21 +76,21 @@ const Index = () => {
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-            animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-            exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-            transition={{ duration: 1.0, delay: 1 }}   // Smooth transition
+            initial={{ opacity: 0, y: 0 }} 
+            animate={{ opacity: 1, y: 0 }}  
+            exit={{ opacity: 0, y: -50 }}    
+            transition={{ duration: 1.0, delay: 1 }}  
           >
             <div className="design h-[200px] w-[600px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox2 relative">
               <motion.div
-                initial={{ opacity: 0, y: 0 }}  // Start invisible & move up
-                animate={{ opacity: 1, y: 0 }}   // Fade in & move to normal position
-                exit={{ opacity: 0, y: -50 }}    // Fade out & move up when leaving
-                transition={{ duration: 1.0, delay: 2 }}   // Smooth transition
+                initial={{ opacity: 0, y: 0 }}  
+                animate={{ opacity: 1, y: 0 }}   
+                exit={{ opacity: 0, y: -50 }}    
+                transition={{ duration: 1.0, delay: 2 }}   
               >
                 <div className="btns flex gap-10">
                   <div className="firstBtn bg-transparent shadow-customInner p-3 rounded-[17%] border-white border-[0.01em]">
-                    <Link to="/">
+                    <Link to="/imageGenerating">
                       <div className="icon">
                         <FontAwesomeIcon icon={faRocket} className='text-white'></FontAwesomeIcon>
                       </div>
