@@ -6,8 +6,11 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
+    const clientId = "565551626947-mjl8gdc1nsragdlegaqgnbpcn3nvi5vs.apps.googleusercontent.com"
     const history = useNavigate();
     const [loggedIn, isLoggedIn] = useState(false);
     const [formData, setFormdata] = useState({
@@ -17,8 +20,8 @@ const Login = () => {
     })
 
     const [loginData, setLoginData] = useState({
-        email : '',
-        password : ''
+        email: '',
+        password: ''
     })
 
     const checkLoginStatus = () => {
@@ -34,10 +37,10 @@ const Login = () => {
     };
 
     const handleChangeLoginData = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setLoginData((prevData) => ({
             ...prevData,
-            [name] : value,
+            [name]: value,
         }));
     }
 
@@ -64,7 +67,7 @@ const Login = () => {
                 email: formData.email,
                 password: formData.password,
                 confirmPassword: formData.confirmPassword
-            })          
+            })
 
             if (response.status == 200) {
                 toast.success('Register Successfully', {
@@ -79,7 +82,7 @@ const Login = () => {
                     transition: Bounce,
                 });
                 setFormdata({ email: '', password: '', confirmPassword: '' })
-                localStorage.setItem("userEmail",formData.email)
+                localStorage.setItem("userEmail", formData.email)
                 history("/");
             }
         } catch (e) {
@@ -112,7 +115,7 @@ const Login = () => {
         }
     }
 
-    const login = async(e) => {
+    const login = async (e) => {
         e.preventDefault();
         try {
             const loginEndPoint = "http://localhost:5000/api/login"
@@ -133,11 +136,11 @@ const Login = () => {
             }
 
             const response = await axios.post(loginEndPoint, {
-                email : loginData.email,
-                password : loginData.password
+                email: loginData.email,
+                password: loginData.password
             })
 
-            if(response.status == 200) {
+            if (response.status == 200) {
                 toast.success('Login Successfully', {
                     position: "top-right",
                     autoClose: 5000,
@@ -149,13 +152,13 @@ const Login = () => {
                     theme: "dark",
                     transition: Bounce,
                 });
-                setLoginData({email : '', password : ''})
-                localStorage.setItem("userEmail",loginData.email)
+                setLoginData({ email: '', password: '' })
+                localStorage.setItem("userEmail", loginData.email)
                 history("/");
             }
         } catch (e) {
             console.log(`Internal Server Error : ${e}`);
-            if(e.response && e.response.status == 400) {
+            if (e.response && e.response.status == 400) {
                 toast.error(e.response.data.message || "Validation error!", {
                     position: "top-right",
                     autoClose: 5000,
@@ -182,6 +185,7 @@ const Login = () => {
             }
         }
     }
+
 
     return (
         <CustomLayout>
@@ -246,10 +250,37 @@ const Login = () => {
                                             <span>Are you Registered?</span>
                                             <span onClick={checkLoginStatus} className='cursor-pointer'>Login</span>
                                         </div>
-                                        <div>
+                                        <div className='flex gap-3'>
                                             <button onClick={registration} class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-1 rounded-lg text-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
                                                 Register
                                             </button>
+                                            <GoogleOAuthProvider clientId={clientId}>
+                                                <GoogleLogin
+                                                    onSuccess={(res) => {
+                                                        const decoded = jwtDecode(res.credential);
+                                                        const user = decoded.email;
+                                                        localStorage.setItem("userEmail", JSON.stringify(user))
+                                                        if (user) {
+                                                            history("/");
+                                                        }
+                                                        console.log(`Login Success : ${res}`)
+                                                        toast.success('Login Successfully', {
+                                                            position: "top-right",
+                                                            autoClose: 5000,
+                                                            hideProgressBar: false,
+                                                            closeOnClick: true,
+                                                            pauseOnHover: true,
+                                                            draggable: true,
+                                                            progress: undefined,
+                                                            theme: "dark",
+                                                            transition: Bounce,
+                                                        });
+                                                    }}
+                                                    onError={(res) => {
+                                                        console.log(`Error Occured : ${res}`)
+                                                    }}
+                                                />
+                                            </GoogleOAuthProvider>
                                         </div>
                                     </form>
                                 </div>
@@ -268,23 +299,23 @@ const Login = () => {
                                         </div>
                                         <div className="email flex flex-col items-start">
                                             <span className="email">Email : </span>
-                                            <input 
-                                            type="text" 
-                                            name="email"
-                                            onChange={handleChangeLoginData}
-                                            value={loginData.email} 
-                                            id="email" 
-                                            className='text-black p-2' />
+                                            <input
+                                                type="text"
+                                                name="email"
+                                                onChange={handleChangeLoginData}
+                                                value={loginData.email}
+                                                id="email"
+                                                className='text-black p-2' />
                                         </div>
                                         <div className="email flex flex-col items-start">
                                             <span className="email">Password : </span>
-                                            <input 
-                                            type="password" 
-                                            name="password" 
-                                            onChange={handleChangeLoginData}
-                                            value={loginData.password}
-                                            id="password" 
-                                            className='text-black p-2' />
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                onChange={handleChangeLoginData}
+                                                value={loginData.password}
+                                                id="password"
+                                                className='text-black p-2' />
                                         </div>
                                         <div className="loginNav flex gap-2">
                                             <span>Are you New User?</span>

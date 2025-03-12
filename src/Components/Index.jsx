@@ -3,10 +3,22 @@ import CustomLayout from './Layout/CustomLayout'
 import ChipAnimation from './Chip Animation/ChipAnimation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolder, faMicrochip, faRocket } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion";
 
 const Index = () => {
+  const history = useNavigate();
+
+  const navigateAIGeneration = (e) => {
+    e.preventDefault();
+    const user = localStorage.getItem('userEmail')
+    if(user) {
+      history('/imageGenerating')
+    }
+    else {
+      history('/login')
+    }
+  }
   return (
     <CustomLayout>
       <section className='relative'>
@@ -90,7 +102,7 @@ const Index = () => {
               >
                 <div className="btns flex gap-10">
                   <div className="firstBtn bg-transparent shadow-customInner p-3 rounded-[17%] border-white border-[0.01em]">
-                    <Link to="/imageGenerating">
+                    <Link onClick={navigateAIGeneration}>
                       <div className="icon">
                         <FontAwesomeIcon icon={faRocket} className='text-white'></FontAwesomeIcon>
                       </div>
