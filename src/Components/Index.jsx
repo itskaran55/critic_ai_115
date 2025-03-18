@@ -21,23 +21,23 @@ const Index = () => {
   }
   return (
     <CustomLayout>
-      <section className='relative'>
+      <section className='relative overflow-x-hidden'>
         <motion.div
           initial={{ opacity: 0, y: 0 }}  
           animate={{ opacity: 1, y: 0 }}   
           exit={{ opacity: 0, y: -50 }}   
           transition={{ duration: 1.0, delay: 1 }}   
         >
-          <div className="icons absolute left-[10%] text-2xl">
+          <div className="icons absolute left-[10%] text-2xl phs:hidden">
             <FontAwesomeIcon icon={faMicrochip} className='text-white' />
           </div>
-          <div className="icons absolute left-[5%] top-[13%] text-2xl">
+          <div className="icons absolute left-[5%] top-[13%] text-2xl phs:hidden">
             <FontAwesomeIcon icon={faMicrochip} className='text-[#84bdae]' />
           </div>
-          <div className="icons absolute left-[92%] top-[74%] text-2xl">
+          <div className="icons absolute left-[92%] top-[74%] text-2xl phs:hidden">
             <FontAwesomeIcon icon={faMicrochip} className='text-[#84bdae]' />
           </div>
-          <div className="icons absolute left-[85%] top-[85%] text-2xl">
+          <div className="icons absolute left-[85%] top-[85%] text-2xl phs:hidden">
             <FontAwesomeIcon icon={faMicrochip} className='text-white' />
           </div>
         </motion.div>
@@ -48,7 +48,7 @@ const Index = () => {
             exit={{ opacity: 0, y: -50 }}    
             transition={{ duration: 1.0, delay: 1 }}  
           >
-            <div className="design h-[400px] w-[900px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox relative">
+            <div className="design h-[400px] w-[900px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox relative phs:w-[550px]">
 
               <div className="titlesandanimation text-white flex flex-col justify-center items-center">
                 <motion.div
@@ -69,7 +69,7 @@ const Index = () => {
                       exit={{ opacity: 0, y: -50 }}    
                       transition={{ duration: 1.0, delay: 2 }}  
                     >
-                      <h1 className='text-[4rem] font-bold'>CRITIC_LAUNCH_115</h1>
+                      <h1 className='text-[4rem] font-bold phs:text-[2em]'>CRITIC_LAUNCH_115</h1>
                     </motion.div>
                   </div>
                   <div className="description text-[1.5rem] font-bold text-[#84bdae]">
@@ -79,7 +79,7 @@ const Index = () => {
                       exit={{ opacity: 0, y: -50 }}    
                       transition={{ duration: 1.0, delay: 2 }}   
                     >
-                      <h3>Your AI-Powered Art Studio!</h3>
+                      <h3 className='phs:text-[0.8em]'>Your AI-Powered Art Studio!</h3>
                     </motion.div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const Index = () => {
             exit={{ opacity: 0, y: -50 }}    
             transition={{ duration: 1.0, delay: 1 }}  
           >
-            <div className="design h-[200px] w-[600px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox2 relative">
+            <div className="design h-[200px] w-[600px] bg-black rounded-[50%] flex justify-center items-center shadow-designBox2 relative phs:w-[550px] overflow-x-hidden">
               <motion.div
                 initial={{ opacity: 0, y: 0 }}  
                 animate={{ opacity: 1, y: 0 }}   

@@ -100,7 +100,7 @@ const Login = () => {
                 });
             }
             else {
-                toast.error('Intenal Server Error..!', {
+                toast.error('Internal Server Error..!', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -171,7 +171,7 @@ const Login = () => {
                 });
             }
             else {
-                toast.error('Intenal Server Error..!', {
+                toast.error('Internal Server Error..!', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -189,20 +189,31 @@ const Login = () => {
 
     return (
         <CustomLayout>
-            <section className='flex justify-center items-center'>
+            <section className='flex justify-center items-center phs:z-[-9999]'>
+                <div className="sphereAnimation flex justify-center items-center z-[9999] d-flex justify-center items-center absolute z-[1]">
+                    <motion.div
+                        initial={{ opacity: 0, y: 0 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 0 }}
+                        transition={{ duration: 1.0, delay: 2 }}
+                    >
+                        <video src="/SphereAnimation.mp4" className={`h-[380px] w-[380px] hidden phs:block`} autoPlay loop muted playsInline ></video>
+                    </motion.div>
+                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 0 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -50 }}
                     transition={{ duration: 1.0, delay: 1 }}
                 >
-                    <div className="icons absolute left-[12%] top-[10%] text-[4rem]">
+                    <div className="icons absolute left-[12%] top-[10%] text-[4rem] phs:text-[3rem] phs:left-[5%]">
                         <FontAwesomeIcon icon={faMicrochip} className='text-white' />
                     </div>
-                    <div className="icons absolute right-[12%] bottom-[5%] text-[4rem]">
+                    <div className="icons absolute right-[12%] bottom-[5%] text-[4rem] phs:text-[3rem] phs:right-[5%]">
                         <FontAwesomeIcon icon={faMicrochip} className='text-[#84bdae]' />
                     </div>
                 </motion.div>
+
                 <div className="flex gap-[10%] justify-around items-center mainFrame w-[1100px] h-[530px] bg-white/5 backdrop-blur shadow-designBox3 my-10 rounded-[2%] overflow-hidden z-[100]">
                     <div className="leftSide text-white h-[517px] p-10 flex justify-between items-center z-[9999]">
                         {loggedIn == false && (
@@ -212,12 +223,12 @@ const Login = () => {
                                 transition={{ duration: 1, ease: "easeInOut" }}
                             >
                                 <div className={`register relative h-[500px] flex items-center w-[220px] ${loggedIn ? "hidden" : "block"}`}>
-                                    <form className='absolute left-10 items-center flex flex-col gap-5'>
+                                    <form className='absolute left-10 items-center flex flex-col gap-5 phs:absolute phs:right-[40px]'>
                                         <div className="mainTitle">
                                             <h1 className='text-2xl font-bold'>Registration</h1>
                                         </div>
                                         <div className="email flex flex-col items-start">
-                                            <span className="email">Email : </span>
+                                            <span className="email phs:font-bold">Email : </span>
                                             <input type="text"
                                                 value={formData.email}
                                                 name="email"
@@ -227,7 +238,7 @@ const Login = () => {
                                             />
                                         </div>
                                         <div className="email flex flex-col items-start">
-                                            <span className="email">Password : </span>
+                                            <span className="email phs:font-bold">Password : </span>
                                             <input type="password"
                                                 value={formData.password}
                                                 name="password"
@@ -237,7 +248,7 @@ const Login = () => {
                                             />
                                         </div>
                                         <div className="email flex flex-col items-start">
-                                            <span className="email">Confirm Password : </span>
+                                            <span className="email phs:font-bold">Confirm Password : </span>
                                             <input type="password"
                                                 name="confirmPassword"
                                                 value={formData.confirmPassword}
@@ -246,12 +257,12 @@ const Login = () => {
                                                 className='text-black p-2'
                                             />
                                         </div>
-                                        <div className="loginNav flex gap-2">
+                                        <div className="loginNav flex gap-2 phs:w-screen phs:flex phs:items-center phs:justify-center phs:font-bold">
                                             <span>Are you Registered?</span>
                                             <span onClick={checkLoginStatus} className='cursor-pointer'>Login</span>
                                         </div>
                                         <div className='flex gap-3'>
-                                            <button onClick={registration} class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-1 rounded-lg text-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+                                            <button onClick={registration} class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-1 rounded-lg text-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg phs:text-black phs:bg-white">
                                                 Register
                                             </button>
                                             <GoogleOAuthProvider clientId={clientId}>
@@ -292,13 +303,13 @@ const Login = () => {
                                 animate={{ x: "280%" }}
                                 transition={{ duration: 1, ease: "easeInOut" }}
                             >
-                                <div className={`login p-5 relative h-[500px] flex items-center w-[260px] absolute right-20 ${loggedIn ? "block" : "hidden"}`}>
-                                    <form action="" className='absolute left-10 items-center flex flex-col gap-5'>
+                                <div className={`login p-5 relative h-[500px] flex items-center w-[260px] absolute right-20 ${loggedIn ? "block" : "hidden"} phs:z-[-9999]`}>
+                                    <form action="" className='absolute left-10 items-center flex flex-col gap-5 phs:absolute phs:-translate-x-[709px]'>
                                         <div className="mainTitle">
                                             <h1 className='text-2xl font-bold'>Login</h1>
                                         </div>
                                         <div className="email flex flex-col items-start">
-                                            <span className="email">Email : </span>
+                                            <span className="email phs:font-bold">Email : </span>
                                             <input
                                                 type="text"
                                                 name="email"
@@ -308,7 +319,7 @@ const Login = () => {
                                                 className='text-black p-2' />
                                         </div>
                                         <div className="email flex flex-col items-start">
-                                            <span className="email">Password : </span>
+                                            <span className="email phs:font-bold">Password : </span>
                                             <input
                                                 type="password"
                                                 name="password"
@@ -317,12 +328,12 @@ const Login = () => {
                                                 id="password"
                                                 className='text-black p-2' />
                                         </div>
-                                        <div className="loginNav flex gap-2">
+                                        <div className="loginNav flex gap-2 phs:font-bold">
                                             <span>Are you New User?</span>
                                             <span onClick={checkLoginStatus} className='cursor-pointer'>Register</span>
                                         </div>
                                         <div>
-                                            <button onClick={login} class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-1 rounded-lg text-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+                                            <button onClick={login} class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-1 rounded-lg text-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg phs:text-black">
                                                 Login
                                             </button>
                                         </div>
@@ -331,7 +342,7 @@ const Login = () => {
                             </motion.div>
                         )}
                     </div>
-                    <div className="rightSide relative">
+                    <div className="rightSide relative phs:hidden">
                         {loggedIn == true && (
                             <>
                                 <motion.div

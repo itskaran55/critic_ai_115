@@ -1,10 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 // Function to animate sphere geometry
 function Sphere() {
+  const [color, setColor] = useState("#84bdae")
+
+  useEffect(() => {
+    const handleResize = () => {
+      if(window.innerWidth <= 768) {
+        setColor("#ffffff")
+      }
+      else {
+        setColor("#84bdae")
+      }
+    };
+    handleResize();
+  },[]);
+
+
+  // window.addEventListener()
   useFrame((state) => {
     const mesh = state.scene.getObjectByName("sphere");
     if (mesh) {
@@ -32,7 +48,7 @@ function Sphere() {
   return (
     <mesh name="sphere" scale={[2, 2, 2]}>
       <sphereGeometry args={[100, 32, 32]} />
-      <meshPhongMaterial color={"#84bdae"} wireframe={true} opacity={0.5} transparent={true} />
+      <meshPhongMaterial color={color} wireframe={true} opacity={0.5} transparent={true}/>
     </mesh>
   );
 }
